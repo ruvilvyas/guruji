@@ -13,7 +13,7 @@ export default function Hero() {
 
       <div className="relative text-center max-w-2xl px-4 space-y-8">
         <div className="animate-fade-in">
-          <p className="text-lg text-indigo-400 font-mono mb-4">Hi there, I'm</p>
+          <p className="text-lg text-indigo-400 font-mono mb-4">Hi there, I&apos;m</p>
           <h1 className=" text-6xl font-extrabold md:text-7xl  bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
           <Typewriter
             words={['Dhruvil Vyas']}
@@ -35,7 +35,7 @@ export default function Hero() {
             Crafting digital experiences with modern web technologies and scalable architectures.
           </p>
           <button className="mt-8 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-indigo-500/20">
-            Let's Connect →
+            Let&apos;s Connect →
           </button>
         </div>
       </div>

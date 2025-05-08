@@ -10,12 +10,12 @@ export default function Contact() {
       <pre className="bg-gray-100 p-6 rounded-lg overflow-x-auto text-sm leading-7">
 <span className="text-pink-500">{"{"}</span>
   {"\n"}
-  &nbsp;&nbsp;<span className="text-yellow-600">"name"</span>: <span className="text-blue-600">"Dhruvil Vyas"</span>,{"\n"}
-  &nbsp;&nbsp;<span className="text-yellow-600">"email"</span>: <span className="text-blue-600">"dhruvilvyas03@gmail.com"</span>,{"\n"}
-  &nbsp;&nbsp;<span className="text-yellow-600">"phone"</span>: <span className="text-blue-600">"9979089031"</span>,{"\n"}
-  &nbsp;&nbsp;<span className="text-yellow-600">"address"</span>: <span className="text-blue-600">"India"</span>,{"\n"}
-  &nbsp;&nbsp;<span className="text-yellow-600">"github"</span>: <span className="text-blue-600">"<a href='https://github.com/ruvilvyas' target='_blank' rel='noopener noreferrer' className="underline text-blue-600">ruvilvyas</a>"</span>{"\n"}
-<span className="text-pink-500">{"}"}</span>
+  <span className="text-yellow-600">"name"</span>: <span className="text-blue-600">"Dhruvil Vyas"</span>,{"\n"}
+  <span className="text-yellow-600">"email"</span>: <span className="text-blue-600">"dhruvilvyas03@gmail.com"</span>,{"\n"}
+  <span className="text-yellow-600">"phone"</span>: <span className="text-blue-600">"9979089031"</span>,{"\n"}
+  <span className="text-yellow-600">"address"</span>: <span className="text-blue-600">"India"</span>,{"\n"}
+  <p><strong>"GitHub:"</strong> <a href="https://github.com/ruvilvyas" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">ruvilvyas</a></p>
+  <span className="text-pink-500">{"}"}</span>
       </pre>
     </div>
   );
