@@ -11,7 +11,7 @@ const Footer = () => {
           <a href="https://linkedin.com/in/DhruvilVyas" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="mailto:dhruvilvyas03@gmail.com">Email</a>
         </div>
-        <p className="text-sm text-gray-400">© 2025 VDR. i don't need rights.</p>
+        <p className="text-sm text-gray-400">© 2025 VDR. i don&apos;t need rights.</p>
       </footer>
     );
   };
