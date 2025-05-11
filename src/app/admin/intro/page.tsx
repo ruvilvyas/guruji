@@ -81,7 +81,7 @@ function FormField({
   label: string;
   name: string;
   value: string;
-  onChange: (e: React.ChangeEvent<any>) => void;
+onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   textarea?: boolean;
 }) {
   return (

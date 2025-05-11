@@ -22,12 +22,20 @@ export async function POST(req: Request) {
     const contact = await Contact.create(body);
 
     return NextResponse.json(contact);
-  } catch (error: any) {
-    console.error("❌ Contact API Error:", error.message || error);
-    return NextResponse.json(
-      { error: error.message || "Failed to save contact info" },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("❌ Contact API Error:", error.message);
+      return NextResponse.json(
+        { error: error.message || "Failed to save contact info" },
+        { status: 500 }
+      );
+    } else {
+      console.error("❌ Contact API Error:", error);
+      return NextResponse.json(
+        { error: "Failed to save contact info" },
+        { status: 500 }
+      );
+    }
   }
 }
 
