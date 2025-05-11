@@ -1,22 +1,77 @@
-import React from 'react';
+"use client";
+import { useEffect, useState } from "react";
+import { Mail, Phone, MapPin, Github } from "lucide-react";
 
 export default function Contact() {
-  return (
-    <div className="bg-white text-gray-800 font-mono p-8 rounded-lg shadow-lg max-w-2xl mx-auto my-16 border border-gray-300">
-      <h2 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">
-        Contact Me
-      </h2>
+  const [contact, setContact] = useState<{
+    email: string;
+    phone: string;
+    address: string;
+    github: string;
+  } | null>(null);
 
-      <pre className="bg-gray-100 p-6 rounded-lg overflow-x-auto text-sm leading-7">
-<span className="text-pink-500">{"{"}</span>
-  {"\n"}
-  <span className="text-yellow-600">name</span>: <span className="text-blue-600">Dhruvil Vyas</span>,{"\n"}
-  <span className="text-yellow-600">email</span>: <span className="text-blue-600">dhruvilvyas03@gmail.com</span>,{"\n"}
-  <span className="text-yellow-600">phone</span>: <span className="text-blue-600">9979089031</span>,{"\n"}
-  <span className="text-yellow-600">address</span>: <span className="text-blue-600">India</span>,{"\n"}
-  <p><strong>GitHub:</strong> <a href="https://github.com/ruvilvyas" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">ruvilvyas</a></p>
-  <span className="text-pink-500">{"}"}</span>
-      </pre>
+  useEffect(() => {
+    const fetchContact = async () => {
+      try {
+        const res = await fetch("/api/contact");
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
+        setContact(data);
+      } catch (err) {
+        console.error("Failed to fetch contact data", err);
+      }
+    };
+    fetchContact();
+  }, []);
+
+  if (!contact) return <div className="text-center py-10">Loading contact info...</div>;
+
+  return (
+    <section className="py-16 bg-gray-100" id="contact">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">Contact Me</h2>
+
+        <div className="bg-white rounded-xl shadow-lg p-8 md:p-10 space-y-6">
+          <ContactItem icon={<Mail />} label="Email" value={contact.email} />
+          <ContactItem icon={<Phone />} label="Phone" value={contact.phone} />
+          <ContactItem icon={<MapPin />} label="Address" value={contact.address} />
+          <ContactItem
+            icon={<Github />}
+            label="GitHub"
+            value={contact.github}
+            link={`https://github.com/${contact.github}`}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactItem({
+  icon,
+  label,
+  value,
+  link,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  link?: string;
+}) {
+  if (!value) return null;
+  return (
+    <div className="flex items-start gap-4">
+      <div className="text-blue-600 mt-1">{icon}</div>
+      <p className="text-lg text-gray-700">
+        <span className="font-semibold text-blue-700">{label}:</span>{" "}
+        {link ? (
+          <a href={link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">
+            {value}
+          </a>
+        ) : (
+          value
+        )}
+      </p>
     </div>
   );
 }

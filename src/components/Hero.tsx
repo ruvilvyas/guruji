@@ -1,7 +1,33 @@
-import React from 'react';
-import { Typewriter } from 'react-simple-typewriter';
-// Hero.tsx
+"use client";
+import { useEffect, useState } from "react";
+import { Typewriter } from "react-simple-typewriter";
+
 export default function Hero() {
+  const [intro, setIntro] = useState<{
+    welcomeText: string;
+    firstName: string;
+    lastName: string;
+    caption: string;
+    description: string;
+  } | null>(null); // allow null initially
+
+  useEffect(() => {
+    const fetchIntro = async () => {
+      try {
+        const res = await fetch("/api/intro");
+        const data = await res.json();
+        setIntro(data);
+      } catch (err) {
+        console.error("Failed to fetch intro data", err);
+      }
+    };
+    fetchIntro();
+  }, []);
+
+  if (!intro) {
+    return <div className="text-white text-center mt-20">Loading intro...</div>; // or a spinner
+  }
+
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 overflow-hidden">
       {/* Animated Background Elements */}
@@ -13,26 +39,26 @@ export default function Hero() {
 
       <div className="relative text-center max-w-2xl px-4 space-y-8">
         <div className="animate-fade-in">
-          <p className="text-lg text-indigo-400 font-mono mb-4">Hi there, I&apos;m</p>
-          <h1 className=" text-6xl font-extrabold md:text-7xl  bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
-          <Typewriter
-            words={['Dhruvil Vyas']}
-            loop={1}
-            cursor
-            cursorStyle="|"
-            typeSpeed={120}
-            deleteSpeed={50}
-            delaySpeed={1000}
-          />
+          <p className="text-lg text-indigo-400 font-mono mb-4">{intro.welcomeText}</p>
+          <h1 className="text-6xl font-extrabold md:text-7xl bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+            <Typewriter
+              words={[`${intro.firstName} ${intro.lastName}`]}
+              loop={1}
+              cursor
+              cursorStyle="|"
+              typeSpeed={120}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
           </h1>
           <h2 className="text-3xl md:text-4xl text-gray-300 mt-6 font-semibold">
-            Full Stack Developer & DevOps Enthusiast
+            {intro.caption}
           </h2>
         </div>
 
         <div className="animate-slide-up">
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
-            Crafting digital experiences with modern web technologies and scalable architectures.
+            {intro.description}
           </p>
           <button className="mt-8 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-indigo-500/20">
             Let&apos;s Connect →

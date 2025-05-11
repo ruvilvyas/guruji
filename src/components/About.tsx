@@ -10,7 +10,7 @@ export default function About() {
 
         <div className="flex flex-col md:flex-row items-center gap-10">
         
-          <div className="md:w-1/6">
+          <div className="md:w-1/7">
             <img
               src="/sani.jpg"
               alt="Dhruvil Vyas"
