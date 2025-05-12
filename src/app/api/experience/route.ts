@@ -16,6 +16,8 @@ export async function POST(req: Request) {
     const newExperience = await Experience.create(body);
     return NextResponse.json(newExperience, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to create experience" }, { status: 400 });
-  }
+  console.error(error); // use it like this
+  return NextResponse.json({ error: "Failed to create experience" }, { status: 400 });
+}
+
 }

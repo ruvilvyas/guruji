@@ -22,7 +22,7 @@ export default function IntroForm() {
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },
     });
-    const data = await res.json();
+//await res.json();
     alert("Saved successfully!");
   };
 
