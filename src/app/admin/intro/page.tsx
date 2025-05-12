@@ -15,16 +15,15 @@ export default function IntroForm() {
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+const handleSubmit = async () => {
+  await fetch("/api/intro", {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: { "Content-Type": "application/json" },
+  });
+  alert("Saved successfully!");
+};
 
-  const handleSubmit = async () => {
-    const res = await fetch("/api/intro", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" },
-    });
-//await res.json();
-    alert("Saved successfully!");
-  };
 
   return (
     <div className="space-y-6">

@@ -1,16 +1,13 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+// app/api/about/route.ts
+import { NextResponse } from "next/server";
 
-let aboutContent = { content: "Initial about me text" }; // Later replace with DB
+let aboutContent = { content: "Initial about me text" }; // temp store
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "GET") {
-    return res.status(200).json(aboutContent);
-  }
+export async function GET() {
+  return NextResponse.json(aboutContent);
+}
 
-  if (req.method === "POST") {
-    aboutContent = req.body;
-    return res.status(200).json({ message: "Updated successfully" });
-  }
-
-  res.status(405).end(); // Method Not Allowed
+export async function POST(req: Request) {
+  aboutContent = await req.json();
+  return NextResponse.json({ message: "Updated successfully" });
 }

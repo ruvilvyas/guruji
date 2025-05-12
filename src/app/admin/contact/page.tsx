@@ -24,8 +24,9 @@ export default function ContactForm() {
       });
 
       if (!res.ok) {
-        const error = await res.text();
-        throw new Error(`API error: ${res.status} - ${error}`);
+       const error = await res.json();
+throw new Error(error.error || "Unknown error");
+
       }
 
       alert("Contact info saved successfully!");
@@ -40,7 +41,7 @@ export default function ContactForm() {
     <div className="space-y-6">
       {["email", "phone", "address", "github"].map((field) => (
         <div key={field} className="flex flex-col">
-          <label className="mb-1 capitalize font-medium text-gray-700 dark:text-BLACK-300">
+          <label className="mb-1 capitalize font-medium text-gray-700 dark:text-black-300">
             {field}
           </label>
           <input
