@@ -1,32 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function Hero() {
-  const [intro, setIntro] = useState<{
-    welcomeText: string;
-    firstName: string;
-    lastName: string;
-    caption: string;
-    description: string;
-  } | null>(null); // allow null initially
-
-  useEffect(() => {
-    const fetchIntro = async () => {
-      try {
-        const res = await fetch("/api/intro");
-        const data = await res.json();
-        setIntro(data);
-      } catch (err) {
-        console.error("Failed to fetch intro data", err);
-      }
-    };
-    fetchIntro();
-  }, []);
-
-  if (!intro) {
-    return <div className="text-white text-center mt-20">Loading intro...</div>; // or a spinner
-  }
+  // Hardcoded data instead of fetching from API
+  const intro = {
+    welcomeText: "Hello, I'm",
+    firstName: "Dhruvil",
+    lastName: "Vyas",
+    caption: "Frontend Developer & Designer",
+    description: "I craft responsive web experiences using modern tools like React, Tailwind CSS, and Next.js. Let's build something awesome together.",
+  };
 
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 overflow-hidden">

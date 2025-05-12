@@ -10,19 +10,35 @@ export default function Contact() {
     github: string;
   } | null>(null);
 
-  useEffect(() => {
-    const fetchContact = async () => {
-      try {
-        const res = await fetch("/api/contact");
-        if (!res.ok) throw new Error("Failed to fetch");
-        const data = await res.json();
-        setContact(data);
-      } catch (err) {
-        console.error("Failed to fetch contact data", err);
+ useEffect(() => {
+  const fetchContact = async () => {
+    try {
+      const res = await fetch("/api/contact");
+
+      // Check if response is not OK
+      if (!res.ok) {
+        console.error("Fetch failed with status:", res.status);
+        return;
       }
-    };
-    fetchContact();
-  }, []);
+
+      // Try parsing JSON, with safety
+      const data = await res.json();
+
+      // Check if error key exists in response
+      if (data.error) {
+        console.error("API returned error:", data.error);
+        return;
+      }
+
+      setContact(data);
+    } catch (err) {
+      console.error("Failed to fetch contact data", err);
+    }
+  };
+
+  fetchContact();
+}, []);
+
 
   if (!contact) return <div className="text-center py-10">Loading contact info...</div>;
 
