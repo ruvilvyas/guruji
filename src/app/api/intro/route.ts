@@ -4,8 +4,11 @@ import Intro from "@/models/Intro";
 
 export async function GET() {
   await connectDB();
-  const data = await Intro.findOne();
-  return NextResponse.json(data);
+  const data = await Intro.findOne(); // ✅
+  if (!data) {
+    return NextResponse.json({ error: "No intro found" }, { status: 404 });
+  }
+  return NextResponse.json(data); // ✅
 }
 
 export async function POST(req: Request) {

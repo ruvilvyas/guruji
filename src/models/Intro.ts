@@ -16,4 +16,4 @@
     description: String
     });
 
-    export default mongoose.models.Intro || mongoose.model<IIntro>("Intro", IntroSchema);
+export default mongoose.models["Intro"] || mongoose.model<IIntro>("Intro", IntroSchema);
