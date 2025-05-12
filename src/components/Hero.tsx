@@ -7,7 +7,7 @@ export default function Hero() {
     welcomeText: "Hello, I'm",
     firstName: "Dhruvil",
     lastName: "Vyas",
-    caption: "Frontend Developer & Designer",
+    caption: "Frontend Developer & DevOps Enthusiast",
     description: "I craft responsive web experiences using modern tools like React, Tailwind CSS, and Next.js. Let's build something awesome together.",
   };
 
