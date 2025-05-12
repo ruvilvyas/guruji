@@ -1,14 +1,27 @@
+// lib/db.ts
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error("❌ MONGODB_URI is not defined in environment variables.");
+}
+
+let isConnected: boolean = false;
 
 const connectDB = async () => {
-  if (mongoose.connections[0].readyState) return;
+  if (isConnected) {
+    return;
+  }
+
   try {
-    await mongoose.connect(MONGODB_URI);
-    console.log("MongoDB Atlas Connected");
+    const db = await mongoose.connect(MONGODB_URI, {
+      dbName: "foodiesta",
+    });
+    isConnected = true;
+    console.log("✅ MongoDB connected:", db.connection.host);
   } catch (err) {
-    console.error("MongoDB Connection Failed", err);
+    console.error("❌ MongoDB connection failed:", err);
     throw err;
   }
 };
