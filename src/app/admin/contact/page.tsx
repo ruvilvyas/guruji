@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import { useAuth } from "@/context/auth-context";
-import { useRouter } from "next/navigation";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
