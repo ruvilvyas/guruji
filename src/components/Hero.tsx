@@ -43,9 +43,13 @@ export default function Hero() {
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
             {intro.description}
           </p>
-          <button className="mt-8 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-indigo-500/20">
-            Let&apos;s Connect →
-          </button>
+          <a
+  href="#contact"
+  className="inline-block mt-8 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-indigo-500/20"
+>
+  Let&apos;s Connect →
+</a>
+
         </div>
       </div>
     </div>
