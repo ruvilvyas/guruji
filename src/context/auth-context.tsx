@@ -1,4 +1,3 @@
-// src/context/auth-context.tsx
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -9,11 +8,7 @@ type AuthContextType = {
   logout: () => void;
 };
 
-const AuthContext = createContext<AuthContextType>({
-  isAuthenticated: false,
-  login: (password: string) => false,
-  logout: () => {},
-});
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,17 +18,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (storedAuth === "true") setIsAuthenticated(true);
   }, []);
 
- const login = (password: string) => {
-  const correctPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+  const login = (password: string) => {
+const correctPassword = "d@hruvil_123";
 
-  if (password === correctPassword) {
-    setIsAuthenticated(true);
-    localStorage.setItem("isAuthenticated", "true");
-    return true;
-  }
-  return false;
-};
-
+    if (password === correctPassword) {
+      setIsAuthenticated(true);
+      localStorage.setItem("isAuthenticated", "true");
+      return true;
+    }
+    return false;
+  };
 
   const logout = () => {
     setIsAuthenticated(false);
@@ -47,4 +41,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

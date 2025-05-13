@@ -1,0 +1,89 @@
+[33mcommit 5eae55b449a2fbfbe0d213bb461cff9ee165b4a1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Tue May 13 16:30:40 2025 +0530
+
+    ♻️ Fix build errors and clean up unused imports
+
+[33mcommit 828e29295757dcdb26c7ccb826cb994b29d7f393[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Tue May 13 16:15:48 2025 +0530
+
+    🔧 Fix login auth with env variable and update components
+
+[33mcommit 6aeda1f6b61957613c36d5e82e4bf6bde8fb2bdc[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Tue May 13 00:06:55 2025 +0530
+
+    Updated Navbar component and tracking functionality
+
+[33mcommit 2379dbef6304e4578e4e2ea5ad9dd1d39a924243[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Mon May 12 23:27:14 2025 +0530
+
+    Updated contact component and tracking functionality
+
+[33mcommit b5176c48b96fc5fc133c2861a83432b2419adb88[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Mon May 12 19:27:20 2025 +0530
+
+    Updated contact component and tracking functionality
+
+[33mcommit 39de114656c1a95c7aa30496058de66c0f7ad77a[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Mon May 12 18:32:39 2025 +0530
+
+    Updated contact component and tracking functionality
+
+[33mcommit 0298df99ef3c2bcea9d1f09c2c037e030e9af1a7[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Mon May 12 08:44:56 2025 +0530
+
+    Updated contact component and tracking functionality
+
+[33mcommit 7dc6f1e102c6861ee9097f254e7d7b53c445e913[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Mon May 12 08:26:49 2025 +0530
+
+    Updated contact component and tracking functionality
+
+[33mcommit 50976c699f97c85fe561d5fe43c7a72ba4a26721[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Sun May 11 11:21:30 2025 +0530
+
+    Updated contact component and tracking functionality
+
+[33mcommit cf1ba2dd457e6d34f10b92af7bbfe9be48d80fc7[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Sun May 11 11:03:49 2025 +0530
+
+    Updated contact component and tracking functionality
+
+[33mcommit a74ed71c29c95389861fbec9f19fb367078cc4c5[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Thu May 8 08:54:40 2025 +0530
+
+    Your update message here
+
+[33mcommit 4e70144ed83f850f72d5b0fae927fa1eebc33318[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Thu May 8 08:34:25 2025 +0530
+
+    Your update message here
+
+[33mcommit 58ef0ba450cef6fbf9f6397b5315b51ffe1fea60[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Wed May 7 22:38:15 2025 +0530
+
+    first commit
+
+[33mcommit d9969351c35360dae36bb2049e0ba7161e76665a[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Wed May 7 22:36:31 2025 +0530
+
+    Initial commit
+
+[33mcommit fd04cf452f1c9faded0261293f44302cade619d1[m
+Author: Dhruvil vyas <158256201+ruvilvyas@users.noreply.github.com>
+Date:   Wed May 7 16:36:48 2025 +0530
+
+    Initial commit from Create Next App

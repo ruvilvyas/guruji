@@ -1,43 +1,58 @@
-// app/api/contact/route.ts
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import Contact from "@/models/Contact";
 
+// Type for the incoming request body
+type ContactData = {
+  email: string;
+  phone: string;
+  address: string;
+  github: string;
+};
+
 export async function POST(req: Request) {
   try {
     await connectDB();
-    const body = await req.json();
-    console.log("📥 Received Contact Data:", body);
 
-    const requiredFields = ["email", "phone", "address", "github"];
-    for (const field of requiredFields) {
-      if (!body[field]) {
-        throw new Error(`Missing field: ${field}`);
-      }
+    const body: ContactData = await req.json();
+    const { email, phone, address, github } = body;
+
+    if (!email || !phone || !address || !github) {
+      return NextResponse.json(
+        { error: "All fields (email, phone, address, github) are required." },
+        { status: 400 }
+      );
     }
 
+    // Replace old contact info
     await Contact.deleteMany({});
-    const contact = await Contact.create(body);
+    const contact = await Contact.create({ email, phone, address, github });
+
     return NextResponse.json(contact, { status: 201 });
-  } catch (error: any) {
-    console.error("❌ Contact API Error:", error.message);
-    return NextResponse.json(
-      { error: error.message || "Failed to save contact info" },
-      { status: 500 }
-    );
+  } catch (err) {
+    const errorMessage =
+      err instanceof Error ? err.message : "Failed to save contact info";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
 
 export async function GET() {
   try {
     await connectDB();
+
     const contact = await Contact.findOne();
     if (!contact) {
-      return NextResponse.json({ error: "No contact info found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "No contact info found" },
+        { status: 404 }
+      );
     }
+
     return NextResponse.json(contact, { status: 200 });
-  } catch (error) {
-    console.error("❌ GET /api/contact error:", error);
-    return NextResponse.json({ error: "Failed to fetch contact info" }, { status: 500 });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Failed to fetch contact info" },
+      { status: 500 }
+    );
   }
 }

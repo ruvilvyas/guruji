@@ -6,11 +6,11 @@ import { useAuth } from "@/context/auth-context";
 export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useAuth();
+  const auth = useAuth();
   const router = useRouter();
 
   const handleLogin = () => {
-    if (login(password)) {
+    if (auth && auth.login && auth.login(password)) {
       router.push("/admin/contact"); // redirect to any section
     } else {
       setError("Invalid password");

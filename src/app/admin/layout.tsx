@@ -6,7 +6,8 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth();
+  const auth = useAuth();
+  const isAuthenticated = auth?.isAuthenticated;
   const router = useRouter();
   const pathname = usePathname();
 
