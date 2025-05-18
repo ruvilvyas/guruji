@@ -9,11 +9,14 @@ export default function AdminLogin() {
   const auth = useAuth();
   const router = useRouter();
 
-  const handleLogin = () => {
-    if (auth && auth.login && auth.login(password)) {
-      router.push("/admin/contact"); // redirect to any section
-    } else {
-      setError("Invalid password");
+  const handleLogin = async () => {
+    if (auth && auth.login) {
+      const success = await auth.login(password);
+      if (success) {
+        router.push("/admin/contact"); // redirect to any section
+      } else {
+        setError("Invalid password");
+      }
     }
   };
 

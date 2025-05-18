@@ -1,10 +1,11 @@
+// src/context/auth-context.tsx
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
 
 type AuthContextType = {
   isAuthenticated: boolean;
-  login: (password: string) => boolean;
+  login: (password: string) => Promise<boolean>;
   logout: () => void;
 };
 
@@ -18,14 +19,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (storedAuth === "true") setIsAuthenticated(true);
   }, []);
 
-  const login = (password: string) => {
-const correctPassword = "d@hruvil_123";
+  const login = async (password: string) => {
+    try {
+      const res = await fetch("/api/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
 
-    if (password === correctPassword) {
-      setIsAuthenticated(true);
-      localStorage.setItem("isAuthenticated", "true");
-      return true;
+      if (res.ok) {
+        setIsAuthenticated(true);
+        localStorage.setItem("isAuthenticated", "true");
+        return true;
+      }
+    } catch (err) {
+      console.error("Login error:", err);
     }
+
     return false;
   };
 
