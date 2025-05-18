@@ -12,12 +12,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
 
   const tabs = ["Intro", "About", "Experiences", "Projects", "Courses", "Contact"];
-
+    
   useEffect(() => {
-    if (!isAuthenticated && pathname !== "/admin/login") {
-      router.replace("/admin/login");
-    }
-  }, [isAuthenticated, pathname]);
+  if (!isAuthenticated && pathname !== "/admin/login") {
+    router.replace("/admin/login");
+  }
+}, [isAuthenticated, pathname, router]); // ← ADD router here
 
   if (!isAuthenticated && pathname !== "/admin/login") return null; // prevent flash
 

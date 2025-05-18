@@ -30,10 +30,10 @@ export async function POST(req: Request) {
 
     return NextResponse.json(contact, { status: 201 });
   } catch (err) {
-    const errorMessage =
-      err instanceof Error ? err.message : "Failed to save contact info";
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
-  }
+  const errorMessage = err instanceof Error ? err.message : "Failed to fetch contact info";
+  return NextResponse.json({ error: errorMessage }, { status: 500 });
+}
+
 }
 
 export async function GET() {
@@ -50,9 +50,8 @@ export async function GET() {
 
     return NextResponse.json(contact, { status: 200 });
   } catch (err) {
-    return NextResponse.json(
-      { error: "Failed to fetch contact info" },
-      { status: 500 }
-    );
-  }
+  const errorMessage = err instanceof Error ? err.message : "Failed to fetch contact info";
+  return NextResponse.json({ error: errorMessage }, { status: 500 });
+}
+
 }
