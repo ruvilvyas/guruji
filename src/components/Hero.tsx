@@ -4,11 +4,11 @@ import { Typewriter } from "react-simple-typewriter";
 export default function Hero() {
   // Hardcoded data instead of fetching from API
   const intro = {
-    welcomeText: "Hello, I'm",
-    firstName: "Dhruvil",
-    lastName: "Vyas",
-    caption: "Frontend Developer & DevOps Enthusiast",
-    description: "I craft responsive web experiences using modern tools like React, Tailwind CSS, and Next.js. Let's build something awesome together.",
+    welcomeText: "Hello, we're",
+    firstName: "Guruji",
+    lastName: "Agency",
+    caption: "Social Media Servicing agency",
+    description: "We are a team of passionate individuals dedicated to helping businesses thrive in the digital world. From social media management to content creation, we provide tailored solutions to elevate your online presence.",
   };
 
   return (

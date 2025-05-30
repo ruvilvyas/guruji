@@ -1,20 +1,18 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface IExperience extends Document {
+export interface ITestimonial extends Document {
+  name: string;
+  position: string;
   company: string;
-  role: string;
-  duration: string;
-  description: string;
-  technologies: string[];
+  review: string;
 }
 
-const ExperienceSchema: Schema = new Schema({
+const TestimonialSchema: Schema = new Schema({
+  name: { type: String, required: true },
+  position: { type: String, required: true },
   company: { type: String, required: true },
-  role: { type: String, required: true },
-  duration: { type: String, required: true },
-  description: { type: String, required: true },
-  technologies: { type: [String], default: [] },
+  review: { type: String, required: true },
 });
 
-export default mongoose.models.Experience ||
-  mongoose.model<IExperience>("Experience", ExperienceSchema);
+export default mongoose.models.Testimonial ||
+  mongoose.model<ITestimonial>("Testimonial", TestimonialSchema);

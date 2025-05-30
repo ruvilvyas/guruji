@@ -10,13 +10,11 @@ if (!MONGODB_URI) {
 let isConnected: boolean = false;
 
 const connectDB = async () => {
-  if (isConnected) {
-    return;
-  }
+  if (isConnected) return;
 
   try {
     const db = await mongoose.connect(MONGODB_URI, {
-      dbName: "foodiesta",
+      dbName: "gurujiagency", // ✅ updated DB name
     });
     isConnected = true;
     console.log("✅ MongoDB connected:", db.connection.host);
