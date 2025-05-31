@@ -51,12 +51,14 @@ export default function About() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <a
-            href="#contact"
-            className="inline-block mt-8 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-indigo-500/20"
-          >
-            Let&apos;s Connect →
-          </a>
+          <a 
+  href="https://www.instagram.com/gurujismsa?igsh=MWZtMW94aWswNjdxbQ==" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="inline-block mt-8 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-indigo-500/20"
+>
+  Let&apos;s Connect →
+</a>
         </div>
       </div>
     </section>
