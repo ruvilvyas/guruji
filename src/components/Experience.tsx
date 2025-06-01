@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
 
 interface Testimonial {
@@ -12,23 +12,29 @@ interface Testimonial {
 }
 
 export default function Testimonials() {
+  // Dummy testimonial data
+  const dummyTestimonials: Testimonial[] = [
+    {
+      _id: "1",
+      name: "Aarav Patel",
+      company: "VisionTech Pvt. Ltd.",
+      review: "Absolutely loved the service! It exceeded my expectations in every way.",
+    },
+    {
+      _id: "2",
+      name: "Sneha Sharma",
+      company: "DesignStudio Inc.",
+      review: "Clean UI, smooth user experience. Highly recommend their product!",
+    },
+  ];
+
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [selectedId, setSelectedId] = useState<string>("");
 
   useEffect(() => {
-    // Set dummy testimonial manually
-    const dummyData: Testimonial[] = [
-      {
-        _id: "1",
-        name: "Dhruvil Vyas",
-        company: "Brahma Technolab",
-        review:
-          "Working with this team was an amazing experience. Highly professional and creative!",
-      },
-    ];
-
-    setTestimonials(dummyData);
-    setSelectedId(dummyData[0]._id);
+    // Manually set dummy testimonials
+    setTestimonials(dummyTestimonials);
+    setSelectedId(dummyTestimonials[0]._id);
   }, []);
 
   const selected = testimonials.find((t) => t._id === selectedId);
