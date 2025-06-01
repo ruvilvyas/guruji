@@ -1,4 +1,5 @@
 import React from 'react'; 
+import Image from 'next/image';
 
 export default function About() {
   return (
@@ -10,17 +11,21 @@ export default function About() {
 
         <div className="flex flex-col md:flex-row items-center gap-10">
         
-          <div className="md:w-1/7">
-            <img
-              src="/guruji.jpg"
-              alt="Guruji SMSA"
-              className="rounded-full w-48 h-48 object-cover border-4 border-indigo-500 mx-auto"
-            />
-          </div>
+         
+<div className="md:w-1/7">
+  <Image
+    src="/guruji.jpg"
+    alt="Guruji SMSA"
+    className="rounded-full border-4 border-indigo-500 mx-auto"
+    width={192}  // 48 * 4 (tailwind's w-48 is 12rem = 192px)
+    height={192} // same as width for square image
+    style={{ objectFit: "cover" }}
+  />
+</div>
          
           <div className="md:w-2/3 text-lg text-gray-300 space-y-4">
             <p>
-              Hi! We’re <span className="font-semibold text-pink-400">Guruji SMSA</span>, a creative video editing agency helping creators, influencers, and brands stand out online.
+              Hi! We&apos;re <span className="font-semibold text-pink-400">Guruji SMSA</span>, a creative video editing agency helping creators, influencers, and brands stand out online.
             </p>
             <p>
               We specialize in scroll-stopping short-form content like <b>Instagram Reels</b>, <b>YouTube Shorts</b>, and <b>promo videos</b> — all crafted to boost engagement and grow your presence.
@@ -29,7 +34,7 @@ export default function About() {
               Along with clean, cinematic edits, we also offer <span className="font-semibold text-green-400">content writing support</span> to sharpen your message and make it more impactful.
             </p>
             <p>
-              We’re not just editors — we’re your <b>creative partners</b> in making your content shine.
+              We&apos;re not just editors — we&apos;re your <b>creative partners</b> in making your content shine.
             </p>
           </div>
         </div>
