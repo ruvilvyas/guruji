@@ -3,25 +3,25 @@ import { ExternalLink } from "lucide-react";
 
 const works = [
   {
-    title: "Instagram Reels Pack for Fashion Brand",
+    title: "Instagram Reels Pack",
     description:
-      "A set of high-energy Reels designed to boost engagement and showcase new arrivals for a fashion label.",
+      "A set of high-energy Reels designed to boost engagement.",
     tech: ["Premiere Pro", "After Effects", "Color Grading", "Transitions"],
-    link: "https://drive.google.com/your-reel-example", // Replace with real link
+    link: "https://drive.google.com/drive/folders/1SfKq8boySPH3IFojGXqo6Uws2OFbvdhG", // Replace with real link
   },
   {
     title: "YouTube Shorts for Tech Influencer",
     description:
       "Cinematic Shorts crafted with attention-grabbing hooks, subtitles, and motion effects for a tech content creator.",
     tech: ["DaVinci Resolve", "Subtitles", "Zoom Effects", "Sound Design"],
-    link: "https://youtube.com/shorts/your-example", // Replace with real link
+    link: "https://www.youtube.com/@SiddhantParmaar", // Replace with real link
   },
   {
     title: "Promo Video for Event Launch",
     description:
       "A sleek promotional edit featuring dynamic transitions, music sync, and key messaging for an event company.",
     tech: ["After Effects", "Text Animation", "Sync Editing", "Cinematic Cuts"],
-    link: "https://vimeo.com/your-promo-link", // Replace with real link
+    link: "https://drive.google.com/drive/folders/1SrSsuPxvR1uKqRGCwu0cdfhqXyR99ps1", // Replace with real link
   },
 ];
 

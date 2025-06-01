@@ -51,7 +51,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
-            {['Home', 'Testimonial', 'Projects', 'Contact', 'About'].map((item) => (
+            {['Home', 'Experience', 'Projects', 'Contact', 'About'].map((item) => (
               <Link
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '')}`}
