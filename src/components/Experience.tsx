@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Quote } from "lucide-react";
+import { Quote, Star, CheckCircle } from "lucide-react";
 
 interface Testimonial {
   _id: string;
@@ -13,7 +13,7 @@ interface Testimonial {
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [selectedId, setSelectedId] = useState<string>("");
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -22,7 +22,6 @@ export default function Testimonials() {
         if (!res.ok) throw new Error("Failed to fetch testimonials");
         const data = await res.json();
         setTestimonials(data);
-        if (data.length > 0) setSelectedId(data[0]._id);
       } catch (error) {
         console.error("Error fetching testimonials:", error);
       }
@@ -31,17 +30,24 @@ export default function Testimonials() {
     fetchTestimonials();
   }, []);
 
-  const selected = testimonials.find((t) => t._id === selectedId);
+  const nextTestimonial = () => {
+    setSelectedIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setSelectedIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const selected = testimonials[selectedIndex];
 
   return (
     <section className="py-20 bg-white" id="reviews">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-14">
-          What People Say
+      <div className="max-w-3xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">
+          Trusted by Clients
         </h2>
 
-        {/* Review Button */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <Link href="/review">
             <button className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition">
               Leave Your Review
@@ -49,37 +55,41 @@ export default function Testimonials() {
           </Link>
         </div>
 
-        {/* Testimonials View */}
-        <div className="flex flex-col md:flex-row gap-10">
-          {/* Sidebar Names */}
-          <div className="flex md:flex-col gap-4 md:w-1/4 overflow-x-auto md:overflow-visible">
-            {testimonials.map((t) => (
-              <button
-                key={t._id}
-                onClick={() => setSelectedId(t._id)}
-                className={`px-4 py-3 rounded-lg text-left font-medium border transition duration-300 ${
-                  selectedId === t._id
-                    ? "bg-indigo-600 text-white border-indigo-600 shadow"
-                    : "bg-white text-indigo-600 border-indigo-400 hover:bg-indigo-600 hover:text-white"
-                }`}
-              >
-                <Quote className="w-4 h-4 inline-block mr-2" />
-                {t.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Main Testimonial Display */}
-          {selected && (
-            <div className="bg-indigo-50 rounded-xl shadow-md p-6 md:w-3/4 transition-all duration-300">
-              <p className="text-lg text-gray-800 italic mb-4">“{selected.review}”</p>
-              <div className="text-sm text-gray-600">
-                <p className="font-semibold">{selected.name}</p>
-                <p className="text-indigo-700">{selected.company}</p>
-              </div>
+        {/* Main Testimonial Card */}
+        {selected && (
+          <div className="bg-indigo-50 rounded-xl shadow-md p-8 relative">
+            <Quote className="w-6 h-6 text-indigo-400 mb-4" />
+            <p className="text-lg text-gray-800 italic mb-6">“{selected.review}”</p>
+            <div className="flex items-center gap-2 text-sm text-gray-700">
+              <CheckCircle className="w-4 h-4 text-green-600" />
+              <p className="font-semibold">{selected.name}</p>
+              <span className="text-indigo-600">({selected.company})</span>
             </div>
-          )}
-        </div>
+            <div className="flex mt-4 text-yellow-500">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-yellow-500" />
+              ))}
+            </div>
+
+            {/* Navigation */}
+            {testimonials.length > 1 && (
+              <div className="flex justify-between mt-8">
+                <button
+                  onClick={prevTestimonial}
+                  className="text-indigo-600 hover:underline"
+                >
+                  ← Previous
+                </button>
+                <button
+                  onClick={nextTestimonial}
+                  className="text-indigo-600 hover:underline"
+                >
+                  Next →
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

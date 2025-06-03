@@ -12,8 +12,10 @@ export default function Hero() {
   };
 
   return (
+    
     <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 overflow-hidden">
       {/* Animated Background Elements */}
+      
       <div className="absolute inset-0 opacity-20">
         <div className="absolute w-96 h-96 bg-purple-500 rounded-full mix-blend-soft-light -top-48 -left-48 animate-blob"></div>
         <div className="absolute w-96 h-96 bg-indigo-500 rounded-full mix-blend-soft-light -top-48 -right-48 animate-blob animation-delay-2000"></div>

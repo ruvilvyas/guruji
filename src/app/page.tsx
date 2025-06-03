@@ -7,6 +7,8 @@ import Projects from "@/components/Projects";
 import React from "react";export default function Home() {
   return (
     <>
+   
+
       <section id="hero"><Hero /></section>
       <section id="experience"><Experience /></section>
       <section id="projects"> <Projects/> </section>
