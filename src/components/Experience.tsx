@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Quote } from "lucide-react";
 
 interface Testimonial {
@@ -12,29 +12,23 @@ interface Testimonial {
 }
 
 export default function Testimonials() {
-  // Dummy testimonial data
-  const dummyTestimonials: Testimonial[] = [
-    {
-      _id: "1",
-      name: "Aarav Patel",
-      company: "VisionTech Pvt. Ltd.",
-      review: "Absolutely loved the service! It exceeded my expectations in every way.",
-    },
-    {
-      _id: "2",
-      name: "Sneha Sharma",
-      company: "DesignStudio Inc.",
-      review: "Clean UI, smooth user experience. Highly recommend their product!",
-    },
-  ];
-
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [selectedId, setSelectedId] = useState<string>("");
 
   useEffect(() => {
-    // Manually set dummy testimonials
-    setTestimonials(dummyTestimonials);
-    setSelectedId(dummyTestimonials[0]._id);
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch("/api/testimonials");
+        if (!res.ok) throw new Error("Failed to fetch testimonials");
+        const data = await res.json();
+        setTestimonials(data);
+        if (data.length > 0) setSelectedId(data[0]._id);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      }
+    };
+
+    fetchTestimonials();
   }, []);
 
   const selected = testimonials.find((t) => t._id === selectedId);
