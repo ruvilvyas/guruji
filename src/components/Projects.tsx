@@ -14,7 +14,7 @@ const works = [
     description:
       "Cinematic Shorts crafted with attention-grabbing hooks, subtitles, and motion effects for a tech content creator.",
     tech: ["DaVinci Resolve", "Subtitles", "Zoom Effects", "Sound Design"],
-    link: "https://www.youtube.com/@SiddhantParmaar", // Replace with real link
+    link: "https://drive.google.com/drive/folders/1oJO7B6VaEsRzl3O6HuESh4VvRCnmFo1R", // Replace with real link
   },
   {
     title: "Promo Video for Event Launch",
